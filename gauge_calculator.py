@@ -12,9 +12,11 @@ unit = input("Calculate stitches or rows? (sts/rows): ").strip().lower()
 
 gauge = stitch_gauge if unit == "sts" else row_gauge
 
-# Your existing measurement and stitch/row count
+# Your existing stitch or row count
 current_count = float(input(f"How many {unit} do you currently have? "))
-current_cm = float(input("What is your measurement in cm? "))
+
+# Calculate your current measurement in cm based on gauge
+current_cm = current_count / gauge * 10
 
 # Regular garment measurements for each size
 print("\nEnter the regular garment measurement (cm) for each size:")
@@ -30,7 +32,8 @@ ratio = current_cm / regular_s
 # Calculate the count needed for each size
 print("\n--- Results ---")
 print(f"Gauge: {gauge} {unit} per 10 cm")
-print(f"Your measurement: {current_cm:g} cm")
+print(f"Your current count: {current_count:g} {unit}")
+print(f"Your measurement: {current_cm:.2f} cm")
 print(f"Regular size S measurement: {regular_s:g} cm")
 print(f"Measurement ratio: {ratio:.3f}\n")
 
